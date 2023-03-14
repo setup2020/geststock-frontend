@@ -1,18 +1,24 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule, } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
+import { MainComponent } from './layouts/main/main.component';
+import { ErrorComponent } from './layouts/error/error.component';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ng6-toastr-notifications';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [MainComponent, ErrorComponent, DashboardComponent],
+  imports: [BrowserModule, 
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    CoreModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent],
 })
-export class AppModule { }
+export class AppModule {}

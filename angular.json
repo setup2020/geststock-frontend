@@ -5,10 +5,37 @@
   "projects": {
     "gestion_stock_frontend": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true,
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        }
+
+      },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "png",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -23,9 +50,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/animate.css",
+              "src/assets/plugins/fontawesome/css/fontawesome.min.css",
+              "src/assets/plugins/fontawesome/css/all.min.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.6.0.min.js",
+              "src/assets/js/feather.min.js",
+              "src/assets/js/jquery.slimscroll.min.js",
+              "src/assets/js/bootstrap.bundle.min.js",
+              "src/assets/js/script.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -97,5 +136,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "09c9dfda-e9be-4f38-ac5a-39ac40986c34"
   }
 }
