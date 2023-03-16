@@ -6,6 +6,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FindCategoryResolver } from './resolvers/category.resolver';
+import { FindProductResolver } from './resolvers/product.resolver';
 
 const routes: Routes = [
   {
@@ -26,13 +27,24 @@ const routes: Routes = [
         resolve:{category:FindCategoryResolver}
       },
       {
-        component:ProductListComponent,
-        path:'products'
+        path:'products',
+        children:[
+
+          {
+            component:ProductListComponent,
+            path:''
+          },
+          {
+            component:ProductAddComponent,
+            path:'add'
+          },
+          {
+            component:ProductAddComponent,
+            path:':id/update',
+            resolve:{category:FindProductResolver}
+          },        ]
       },
-      {
-        component:ProductAddComponent,
-        path:'products/add'
-      }
+     
     ]
   }
 ];

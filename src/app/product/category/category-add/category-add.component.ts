@@ -77,14 +77,14 @@ export class CategoryAddComponent implements OnInit {
       },
       error:()=>{
         this.loading=false;
+        
+       // this.toastrService.showSuccess("Une erreur c'est produite !!!");
       }
     });
 
   }
 
   initForm(category: ICategory): void {
-    console.log(category);
-    
     this.editForm.patchValue({
       name: category.name,
       code: category.code,

@@ -8,14 +8,18 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [MainComponent, ErrorComponent, DashboardComponent],
-  imports: [BrowserModule, 
+  imports: [
+    CommonModule,
+    BrowserModule, 
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
+
     ToastrModule.forRoot()
   ],
   providers: [],

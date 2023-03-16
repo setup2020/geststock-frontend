@@ -112,19 +112,19 @@
                             </label>
                         </th>
                         <th>Product Name</th>
-                        <th>SKU</th>
+                        <th>Reference</th>
                         <th>Category </th>
-                        <th>Brand</th>
+                       
                         <th>price</th>
                         <th>Unit</th>
-                        <th>Qty</th>
+                       
                         <th>Created By</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                  
-                    <tr>
+                    <tr *ngFor="let p of products">
                         <td>
                             <label class="checkboxs">
                                 <input type="checkbox">
@@ -135,23 +135,23 @@
                             <a href="javascript:void(0);" class="product-img">
                                 <img src="assets/img/product/product4.jpg" alt="product">
                             </a>
-                            <a href="javascript:void(0);">Strawberry</a>
+                            <a href="javascript:void(0);">{{p.designation}}</a>
                         </td>
-                        <td>PT004</td>
-                        <td>Fruits</td>
-                        <td>N/D</td>
-                        <td>10.00</td>
-                        <td>pc</td>
-                        <td>100.00</td>
+                        <td>{{p.reference}}</td>
+                        <td>{{p.category.name}}</td>
+                      
+                        <td>{{p.priceUnitHt}}</td>
+                        <td>XAF</td>
+                      
                         <td>Admin</td>
                         <td>
                             <a class="me-3" href="product-details.html">
                                 <img src="assets/img/icons/eye.svg" alt="img">
                             </a>
-                            <a class="me-3" href="editproduct.html">
+                            <a class="me-3"  [routerLink]="['/products',p.id,'update']">
                                 <img src="assets/img/icons/edit.svg" alt="img">
                             </a>
-                            <a class="confirm-text" href="javascript:void(0);">
+                            <a class="confirm-text" href="javascript:void(0);" (click)="move(p.id!)">
                                 <img src="assets/img/icons/delete.svg" alt="img">
                             </a>
                         </td>

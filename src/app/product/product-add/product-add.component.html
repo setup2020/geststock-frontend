@@ -7,25 +7,27 @@
 
 <div class="card">
     <div class="card-body">
+       <form [formGroup]="editForm" (ngSubmit)="save()">
         <div class="row">
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text">
-                </div>
-            </div>
+         
 
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Reference</label>
-                    <input type="text">
+                    <input type="text" formControlName="reference">
+                    <span *ngIf="submitted && f.reference.errors">
+                        <span class="text-danger" *ngIf="f.reference.errors.required">Champ requis</span>
+                    </span>
                 </div>
             </div>
 
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Designation</label>
-                    <input type="text">
+                    <input type="text" formControlName="designation">
+                    <span *ngIf="submitted && f.designation.errors">
+                        <span class="text-danger" *ngIf="f.designation.errors.required">Champ requis</span>
+                    </span>
                 </div>
             </div>
 
@@ -33,34 +35,57 @@
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Price</label>
-                    <input type="text">
+                    <input type="text" formControlName="priceUnitHt">
+                    <span *ngIf="submitted && f.priceUnitHt.errors">
+                        <span class="text-danger" *ngIf="f.priceUnitHt.errors.required">Champ requis</span>
+                    </span>
                 </div>
             </div>
 
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Category</label>
-                    <select class="form-select" required aria-label="select example">
-                        <option value="">Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        </select>
+
+                    <select class="form-select" required aria-label="select example" formControlName="category">
+
+                        <option  [ngValue]="c" *ngFor="let c of categories">{{c.name}}</option>
+                       
+                    </select>
+                   <!-- <ngx-autocomplete [data]="categories" 
+                    searchOnProperty="keyword" 
+                    (selected)='onSelectedCategory($event)'
+                        (inputChanged)='onChangeSearch($event)'
+                        
+                        [itemTemplate]="itemTemplate"
+                         [notFoundTemplate]="notFoundTemplate">
+                         </ngx-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.name"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template> -->
+                    <span *ngIf="submitted && f.category.errors">
+                        <span class="text-danger" *ngIf="f.category.errors.required">Champ requis</span>
+                    </span>
                 </div>
             </div>
 
-                    
+
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Tva</label>
-                    <select class="form-select" required aria-label="select example">
-                        <option value="">Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" required aria-label="select example" formControlName="tva">
+                        <option value="19.25">19.25%</option>
+                       
                     </select>
+                    <span *ngIf="submitted && f.tva.errors">
+                        <span class="text-danger" *ngIf="f.tva.errors.required">Champ requis</span>
+                    </span>
                 </div>
-            </div> 
+            </div>
 
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
@@ -76,7 +101,7 @@
                 </div>
             </div>
 
-<!--            
+            <!--            
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Brand</label>
@@ -88,16 +113,16 @@
                     </select>
                 </div>
             </div> -->
-           
+
             <div class="col-lg-12">
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" formControlName="designation"></textarea>
                 </div>
             </div>
-          
-         
-        
+
+
+
             <div class="col-lg-12">
                 <div class="form-group">
                     <label> Product Image</label>
@@ -111,9 +136,10 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <a href="javascript:void(0);" class="btn btn-submit me-2">Submit</a>
-                <a href="productlist.html" class="btn btn-cancel">Cancel</a>
+                <button class="btn btn-submit me-2" type="submit">Submit</button>
+                <a  routerLink="/products" class="btn btn-cancel">Cancel</a>
             </div>
         </div>
+       </form>
     </div>
 </div>
