@@ -58,11 +58,7 @@
               "src/assets/css/style.css"
             ],
             "scripts": [
-              "src/assets/js/jquery-3.6.0.min.js",
-              "src/assets/js/feather.min.js",
-              "src/assets/js/jquery.slimscroll.min.js",
-              "src/assets/js/bootstrap.bundle.min.js",
-              "src/assets/js/script.js"
+           
 
             ]
           },

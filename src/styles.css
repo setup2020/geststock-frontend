@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+.autocomplete-container .input-container input {
+    height: 46px;
+    background: #f8fafc !important;
+    border: 1px solid #a4abbd !important;
+    border-radius: 4px !important;
+  }
+  
+  .autocomplete-container .input-container input :disabled {
+    background-color: rgb(229, 10, 10) !important;
+    color: linen;
+    opacity: 1;
+  }
+  div .autocomplete-container {
+    box-shadow: none !important;
+    position: relative !important;
+    overflow: visible !important;
+    height: 38px !important;
+  }
+  
+  .ng-select.ng-select-multiple
+    .ng-select-container
+    .ng-value-container
+    .ng-value {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #fff;
+    background-color: #ff7900 !important;
+    border-radius: 2px;
+    margin-right: 5px;
+  }
+  

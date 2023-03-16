@@ -16,16 +16,14 @@ import { SkeletorMainComponent } from './layouts/skeletor-main/skeletor-main.com
     SkeletorMainComponent
   ],
   imports: [
-    
-
-   
-    SharedLibsModule,
-   
+    SharedLibsModule, 
   ],
   exports:[
     HeaderComponent,
+    
     NavbarComponent,
-    SkeletorMainComponent
+    SkeletorMainComponent,
+    SharedLibsModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,52 @@
+<div class="page-header">
+    <div class="page-title">
+        <!-- <h4>Product Add Category</h4>
+        <h6>Create new product Category</h6> -->
+         <h4>Categorie produit</h4>
+         <h6 *ngIf="!editForm.value.id">Creer une nouvelle categorie de produit</h6>
+         <h6 *ngIf="editForm.value.id">Modifier une categorie de produit</h6>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form  [formGroup]="editForm" (ngSubmit)="save()">
+            <div class="row">
+           
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="name">Nom <span class="text-danger">*</span></label>
+                        <input id="name" type="text" formControlName="name">
+                        <span *ngIf="subtmitted && f.name.errors">
+                            <span class=" text-danger" *ngIf="f.name.errors.required">Champ requis</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="code">Code <span class="text-danger">*</span></label>
+                        <input  id="code" type="text" formControlName="code">
+                        <span *ngIf="subtmitted && f.code.errors">
+                            <span class=" text-danger" *ngIf="f.code.errors.required">Champ requis</span>
+                        </span>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" class="form-control" formControlName="description"></textarea>
+                    </div>
+                </div>
+              
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-submit me-2" >{{
+                        editForm.value.id?"Modifier":"Save"
+                        }}</button>
+                    <a routerLink="/categories" class="btn btn-cancel">Cancel</a>
+                </div>
+            </div>
+        </form>
+       
+    </div>
+</div>
