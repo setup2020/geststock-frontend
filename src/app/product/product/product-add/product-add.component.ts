@@ -38,7 +38,7 @@ export class ProductAddComponent implements OnInit {
     if(this.activatedRoute.snapshot.params['id']){
       this.activatedRoute.data.subscribe({
         next:(res:any)=>{
-          this.product=res.category as IProduct;
+          this.product=res.product as IProduct;
           this.initForm(this.product);
           
         }
