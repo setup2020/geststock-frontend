@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren:()=> import('./product/product.module').then(m=>m.ProductModule)
   },
   {
+    path:'peoples',
+    loadChildren:()=>import('./people/people.module').then(m=>m.PeopleModule)
+  },
+  {
     path:'404',
     component:ErrorComponent,
     data:{}

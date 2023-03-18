@@ -24,7 +24,7 @@ products:IProduct[]=[];
   }
 
   move(id: number) {
-    if(confirm("Voullez-vous supprimer cette categorie ?")){
+    if(confirm("Voullez-vous supprimer cet article ?")){
       this.productService.delete(id).subscribe({
         next:()=>{
          this.products= this.products.filter(p=>p.id!==id);

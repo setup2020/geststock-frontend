@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
 
     let menu = $('#sidebar-menu a');
     $('#sidebar-menu a').on('click', (e: any) => {
+      console.log($(menu).parent().hasClass('submenu'));
+      
       if ($(menu).parent().hasClass('submenu')) {
         e.preventDefault();
       }
