@@ -10,9 +10,10 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    AutocompleteLibModule,
+  
     RouterModule,
-    CommonModule
+    CommonModule,
+    AutocompleteLibModule
   ]
 })
 export class SharedLibsModule { }

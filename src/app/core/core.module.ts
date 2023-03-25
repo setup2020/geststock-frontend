@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import {
   HttpClient,
@@ -8,14 +8,17 @@ import {
 import { Title } from '@angular/platform-browser';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [],
   imports: [
     CommonModule,
     HttpClientModule,
+    AutocompleteLibModule,
   
   ],
   providers:[Title,DatePipe,

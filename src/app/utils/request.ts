@@ -3,6 +3,7 @@ import { HttpParams } from "@angular/common/http";
 export class Pagination {
     page?: number;
     size?: number;
+    sort?:string[]
 }
 
 export const createRequestOption = (req?: any): HttpParams => {

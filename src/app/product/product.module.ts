@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 
 import { ProductRoutingModule } from './product-routing.module';
@@ -8,9 +8,11 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     CategoryListComponent,
     CategoryAddComponent,
@@ -20,6 +22,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
   
   ],
   imports: [
+   // CommonModule,
     ProductRoutingModule,
     SharedModule,
   ]

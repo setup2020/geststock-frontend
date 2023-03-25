@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category, ICategory } from 'src/app/models/category.model';
 import { IProduct, Product } from 'src/app/models/product.model';
@@ -21,7 +21,7 @@ export class ProductAddComponent implements OnInit {
     id: [''],
     reference: ['', [Validators.required]],
     designation: ['', [Validators.required]],
-    category: [new Category('','',''), [Validators.required]],
+    category: [null, [Validators.required]],
     priceUnitHt: [0, [Validators.required]],
     priceUnitTtc: [0],
     description: [''],
@@ -29,7 +29,7 @@ export class ProductAddComponent implements OnInit {
 
   })
   product!: IProduct;
-  constructor(private fb: FormBuilder, private categoryService: CategoryService, private router: Router,
+  constructor(private fb: UntypedFormBuilder, private categoryService: CategoryService, private router: Router,
     private activatedRoute: ActivatedRoute,private productService:ProductService,
     private toastrService: ToastrService,
     ) { }
@@ -75,8 +75,11 @@ export class ProductAddComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
-    const { designation, priceUnitHt, priceUnitTtc, id, reference, tva, category } = this.editForm.value as IProduct;
-    const product = new Product(reference,designation,priceUnitTtc,priceUnitHt,category,tva,id?Number(id):null);
+    const { designation, priceUnitHt, priceUnitTtc, id, reference, tva, category } = this.editForm.value;
+  
+    const product = new Product(reference!,designation!,
+      priceUnitTtc!,priceUnitHt!,(category as ICategory)!,
+      tva!,id?Number(id):null);
     this.loading=true;
     this.productService.save(product).subscribe({
       next:()=>{

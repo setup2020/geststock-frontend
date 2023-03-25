@@ -1,13 +1,13 @@
 <div class="page-header">
     <div class="page-title">
-      <h4>Supplier List</h4>
-      <h6>Manage your Suppliers</h6>
+      <h4>ORDER SUPPLIER LIST</h4>
+      <h6>Manage your order supplier</h6>
     </div>
     <div class="page-btn">
-      <a routerLink="/peoples/suppliers/add" class="btn btn-added"
-        ><img src="assets/img/icons/plus.svg" alt="img" />Add
-        Supplier</a
-      >
+      <a  routerLink="/orders/add" class="btn btn-added">
+        <img src="assets/img/icons/plus.svg" alt="img" />Add New
+        Purchases
+      </a>
     </div>
   </div>
 
@@ -62,27 +62,45 @@
       <div class="card" id="filter_inputs">
         <div class="card-body pb-0">
           <div class="row">
-            <div class="col-lg-2 col-sm-6 col-12">
+            <div class="col-lg col-sm-6 col-12">
               <div class="form-group">
-                <input type="text" placeholder="Enter Customer Code" />
+                <input
+                  type="text"
+                  class="datetimepicker cal-icon"
+                  placeholder="Choose Date"
+                />
               </div>
             </div>
-            <div class="col-lg-2 col-sm-6 col-12">
+            <div class="col-lg col-sm-6 col-12">
               <div class="form-group">
-                <input type="text" placeholder="Enter Customer Name" />
+                <input type="text" placeholder="Enter Reference" />
               </div>
             </div>
-            <div class="col-lg-2 col-sm-6 col-12">
+            <div class="col-lg col-sm-6 col-12">
               <div class="form-group">
-                <input type="text" placeholder="Enter Phone Number" />
+                <select class="select">
+                  <option>Choose Supplier</option>
+                  <option>Supplier</option>
+                </select>
               </div>
             </div>
-            <div class="col-lg-2 col-sm-6 col-12">
+            <div class="col-lg col-sm-6 col-12">
               <div class="form-group">
-                <input type="text" placeholder="Enter Email" />
+                <select class="select">
+                  <option>Choose Status</option>
+                  <option>Inprogress</option>
+                </select>
               </div>
             </div>
-            <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+            <div class="col-lg col-sm-6 col-12">
+              <div class="form-group">
+                <select class="select">
+                  <option>Choose Payment Status</option>
+                  <option>Payment Status</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-1 col-sm-6 col-12">
               <div class="form-group">
                 <a class="btn btn-filters ms-auto"
                   ><img
@@ -106,55 +124,38 @@
                 </label>
               </th>
               <th>Supplier Name</th>
-              <th>code</th>
-              
-              <th>Phone</th>
-              <th>email</th>
-              <th>City</th>
-              <th>Country</th>
+              <th>Reference</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Payment Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
+        
             <tr>
-                <td colspan="8" class=" text-center" *ngIf="!suppliers.length">Aucun resultat trouvé</td>
+              <td>
+                <label class="checkboxs">
+                  <input type="checkbox" />
+                  <span class="checkmarks"></span>
+                </label>
+              </td>
+              <td class="text-bolds">Best Power Tools</td>
+              <td>PT006</td>
+              <td>19 Nov 2022</td>
+              <td>
+                <span class="badges bg-lightgreen">Received</span>
+              </td>
+              <td><span class="badges bg-lightgreen">paid</span></td>
+              <td>
+                <a class="me-3" href="editpurchase.html">
+                  <img src="assets/img/icons/edit.svg" alt="img" />
+                </a>
+                <a class="me-3 confirm-text" href="javascript:void(0);">
+                  <img src="assets/img/icons/delete.svg" alt="img" />
+                </a>
+              </td>
             </tr>
-            <tr *ngFor="let s of suppliers">
-                <td>
-                  <label class="checkboxs">
-                    <input type="checkbox" />
-                    <span class="checkmarks"></span>
-                  </label>
-                </td>
-                <td class="productimgname">
-                  <a href="javascript:void(0);" class="product-imgs">
-                    PNG<!--{{s.lastName.charAt(0)}}{{s.firstName!.charAt(0)}}-->
-                  </a>
-                  <a href="javascript:void(0);">{{s|fullName}} </a>
-                </td>
-                <td>{{s.code}}</td>
-                <td>{{s.phone}}</td>
-                <td>
-                    <a
-                      href="/cdn-cgi/l/email-protection"
-                      class="__cf_email__"
-                      data-cfemail="aec4c1c6c0eecbd6cfc3dec2cb80cdc1c3"
-                      >{{s.email}}</a
-                    >
-                  </td>
-                <td>{{s.address?.city}}</td>
-               
-             
-                <td>{{s.address?.country}}</td>
-                <td>
-                  <a class="me-3" [routerLink]="['/peoples/suppliers',s.id,'edit']">
-                    <img src="assets/img/icons/edit.svg" alt="img" />
-                  </a>
-                  <a class="me-3 confirm-text" href="javascript:void(0);">
-                    <img src="assets/img/icons/delete.svg" alt="img"   (click)="move(s.id!)"/>
-                  </a>
-                </td>
-              </tr>
           
           </tbody>
         </table>

@@ -1,12 +1,12 @@
 <div class="page-header">
     <div class="page-title">
-      <h4>Supplier List</h4>
-      <h6>Manage your Suppliers</h6>
+      <h4>Users List</h4>
+      <h6>Manage your Users</h6>
     </div>
     <div class="page-btn">
-      <a routerLink="/peoples/suppliers/add" class="btn btn-added"
+      <a routerLink="/admins/users/add" class="btn btn-added"
         ><img src="assets/img/icons/plus.svg" alt="img" />Add
-        Supplier</a
+        User</a
       >
     </div>
   </div>
@@ -105,9 +105,8 @@
                   <span class="checkmarks"></span>
                 </label>
               </th>
-              <th>Supplier Name</th>
-              <th>code</th>
-              
+              <th>Name</th>
+
               <th>Phone</th>
               <th>email</th>
               <th>City</th>
@@ -117,9 +116,9 @@
           </thead>
           <tbody>
             <tr>
-                <td colspan="8" class=" text-center" *ngIf="!suppliers.length">Aucun resultat trouvé</td>
+                <td colspan="7" class=" text-center" *ngIf="!users.length">Aucun resultat trouvé</td>
             </tr>
-            <tr *ngFor="let s of suppliers">
+            <tr *ngFor="let c of users">
                 <td>
                   <label class="checkboxs">
                     <input type="checkbox" />
@@ -128,30 +127,30 @@
                 </td>
                 <td class="productimgname">
                   <a href="javascript:void(0);" class="product-imgs">
-                    PNG<!--{{s.lastName.charAt(0)}}{{s.firstName!.charAt(0)}}-->
+                    WC
                   </a>
-                  <a href="javascript:void(0);">{{s|fullName}} </a>
+                  <a href="javascript:void(0);">{{c.lastName}}  {{c.firstName}}</a>
                 </td>
-                <td>{{s.code}}</td>
-                <td>{{s.phone}}</td>
+               
+                <td>{{c.phone}}</td>
                 <td>
                     <a
                       href="/cdn-cgi/l/email-protection"
                       class="__cf_email__"
                       data-cfemail="aec4c1c6c0eecbd6cfc3dec2cb80cdc1c3"
-                      >{{s.email}}</a
+                      >{{c.email}}</a
                     >
                   </td>
-                <td>{{s.address?.city}}</td>
+                <td>{{c.address?.city}}</td>
                
              
-                <td>{{s.address?.country}}</td>
+                <td>{{c.address?.country}}</td>
                 <td>
-                  <a class="me-3" [routerLink]="['/peoples/suppliers',s.id,'edit']">
+                  <a class="me-3" [routerLink]="['/admins/users',c.id,'update']">
                     <img src="assets/img/icons/edit.svg" alt="img" />
                   </a>
                   <a class="me-3 confirm-text" href="javascript:void(0);">
-                    <img src="assets/img/icons/delete.svg" alt="img"   (click)="move(s.id!)"/>
+                    <img src="assets/img/icons/delete.svg" alt="img"   (click)="move(c.id!)"/>
                   </a>
                 </td>
               </tr>

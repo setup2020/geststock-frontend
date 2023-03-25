@@ -1,107 +1,113 @@
 <div class="page-header">
-    <div class="page-title">
-        <h4>Product Add</h4>
-        <h6>Create new product</h6>
-    </div>
+  <div class="page-title">
+    <h4>Product Add</h4>
+    <h6>Create new product</h6>
+  </div>
 </div>
 
 <div class="card">
-    <div class="card-body">
-       <form [formGroup]="editForm" (ngSubmit)="save()">
-        <div class="row">
-         
+  <div class="card-body">
+    <form [formGroup]="editForm" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>Reference</label>
+            <input type="text" formControlName="reference" />
+            <span *ngIf="submitted && f.reference.errors">
+              <span class="text-danger" *ngIf="f.reference.errors.required"
+                >Champ requis</span
+              >
+            </span>
+          </div>
+        </div>
 
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Reference</label>
-                    <input type="text" formControlName="reference">
-                    <span *ngIf="submitted && f.reference.errors">
-                        <span class="text-danger" *ngIf="f.reference.errors.required">Champ requis</span>
-                    </span>
-                </div>
-            </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>Designation</label>
+            <input type="text" formControlName="designation" />
+            <span *ngIf="submitted && f.designation.errors">
+              <span class="text-danger" *ngIf="f.designation.errors.required"
+                >Champ requis</span
+              >
+            </span>
+          </div>
+        </div>
 
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Designation</label>
-                    <input type="text" formControlName="designation">
-                    <span *ngIf="submitted && f.designation.errors">
-                        <span class="text-danger" *ngIf="f.designation.errors.required">Champ requis</span>
-                    </span>
-                </div>
-            </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text" formControlName="priceUnitHt" />
+            <span *ngIf="submitted && f.priceUnitHt.errors">
+              <span class="text-danger" *ngIf="f.priceUnitHt.errors.required"
+                >Champ requis</span
+              >
+            </span>
+          </div>
+        </div>
 
+        <div class="col-lg-3 col-sm-6 col-12">
+          <label>Category</label>
+          <div class="ng-autocomplete">
+           
+            <ngx-autocomplete
+             
+              [data]="categories"
+              searchOnProperty="keyword"
+              [itemTemplate]="itemTemplateCat"
+              [notFoundTemplate]="notFoundTemplateCat"
+              
+            >
+            </ngx-autocomplete>
 
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Price</label>
-                    <input type="text" formControlName="priceUnitHt">
-                    <span *ngIf="submitted && f.priceUnitHt.errors">
-                        <span class="text-danger" *ngIf="f.priceUnitHt.errors.required">Champ requis</span>
-                    </span>
-                </div>
-            </div>
+            <ng-template #itemTemplateCat let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
 
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Category</label>
+            <ng-template #notFoundTemplateCat let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+            <span *ngIf="submitted && f.category.errors">
+              <span class="text-danger" *ngIf="f.category.errors.required"
+                >Champ requis</span
+              >
+            </span>
+          </div>
+        </div>
 
-                    <select class="form-select" required aria-label="select example" formControlName="category">
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>Tva</label>
+            <select
+              class="form-select"
+              required
+              aria-label="select example"
+              formControlName="tva"
+            >
+              <option value="19.25">19.25%</option>
+            </select>
+            <span *ngIf="submitted && f.tva.errors">
+              <span class="text-danger" *ngIf="f.tva.errors.required"
+                >Champ requis</span
+              >
+            </span>
+          </div>
+        </div>
 
-                        <option  [ngValue]="c" *ngFor="let c of categories">{{c.name}}</option>
-                       
-                    </select>
-                   <!-- <ngx-autocomplete [data]="categories" 
-                    searchOnProperty="keyword" 
-                    (selected)='onSelectedCategory($event)'
-                        (inputChanged)='onChangeSearch($event)'
-                        
-                        [itemTemplate]="itemTemplate"
-                         [notFoundTemplate]="notFoundTemplate">
-                         </ngx-autocomplete>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>Montant hors taxe</label>
+            <input type="text" />
+          </div>
+        </div>
 
-                    <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.name"></a>
-                    </ng-template>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>Montant taxe comprise</label>
+            <input type="text" />
+          </div>
+        </div>
 
-                    <ng-template #notFoundTemplate let-notFound>
-                        <div [innerHTML]="notFound"></div>
-                    </ng-template> -->
-                    <span *ngIf="submitted && f.category.errors">
-                        <span class="text-danger" *ngIf="f.category.errors.required">Champ requis</span>
-                    </span>
-                </div>
-            </div>
-
-
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Tva</label>
-                    <select class="form-select" required aria-label="select example" formControlName="tva">
-                        <option value="19.25">19.25%</option>
-                       
-                    </select>
-                    <span *ngIf="submitted && f.tva.errors">
-                        <span class="text-danger" *ngIf="f.tva.errors.required">Champ requis</span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Montant hors taxe</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 col-12">
-                <div class="form-group">
-                    <label>Montant taxe comprise</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <!--            
+        <!--            
             <div class="col-lg-3 col-sm-6 col-12">
                 <div class="form-group">
                     <label>Brand</label>
@@ -114,32 +120,33 @@
                 </div>
             </div> -->
 
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" formControlName="designation"></textarea>
-                </div>
-            </div>
-
-
-
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label> Product Image</label>
-                    <div class="image-upload">
-                        <input type="file">
-                        <div class="image-uploads">
-                            <img src="assets/img/icons/upload.svg" alt="img">
-                            <h4>Drag and drop a file to upload</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <button class="btn btn-submit me-2" type="submit">Submit</button>
-                <a  routerLink="/products" class="btn btn-cancel">Cancel</a>
-            </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea
+              class="form-control"
+              formControlName="designation"
+            ></textarea>
+          </div>
         </div>
-       </form>
-    </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label> Product Image</label>
+            <div class="image-upload">
+              <input type="file" />
+              <div class="image-uploads">
+                <img src="assets/img/icons/upload.svg" alt="img" />
+                <h4>Drag and drop a file to upload</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <button class="btn btn-submit me-2" type="submit">Submit</button>
+          <a routerLink="/products" class="btn btn-cancel">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

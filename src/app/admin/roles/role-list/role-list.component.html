@@ -1,0 +1,62 @@
+<div class="page-header">
+    <div class="page-title">
+      <h4>Roles List</h4>
+      <h6>Manage your Roles</h6>
+    </div>
+    <div class="page-btn">
+      <a routerLink="/admins/roles/add" class="btn btn-added"
+        ><img src="assets/img/icons/plus.svg" alt="img" />Add
+        Role</a
+      >
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+     
+
+      
+      <div class="table-responsive">
+        <table class="table datanew">
+          <thead>
+            <tr>
+             
+              <th>ID</th>
+              <th>Name</th>
+              
+              <th>Status</th>
+             
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="!response.content?.length">
+              <td colspan="4" class=" text-center">Aucun resultat trouvé</td>
+          </tr>
+          <tr *ngFor="let r of response.content">
+             
+            <td>{{r.id}}</td>
+              <td >
+               
+                {{r.name}}
+              </td>
+
+              <td>
+                <span class="badges bg-lightgreen" *ngIf="STATUS.ENABLE===r.status">Activer</span>
+                <span class="badges bg-lightred" *ngIf="STATUS.DISABLE===r.status">Désactiver</span>
+               
+              <td>
+                  <a class="me-3"  [routerLink]="['/admins/roles',r.id,'update']">
+                      <img src="assets/img/icons/edit.svg" alt="img">
+                  </a>
+                  <a class="me-3 confirm-text" (click)="move(r.id!)" href="javascript:void(0);">
+                      <img src="assets/img/icons/delete.svg" alt="img">
+                  </a>
+              </td>
+          </tr>
+          
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

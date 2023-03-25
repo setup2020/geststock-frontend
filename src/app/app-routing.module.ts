@@ -27,6 +27,19 @@ const routes: Routes = [
     path:'peoples',
     loadChildren:()=>import('./people/people.module').then(m=>m.PeopleModule)
   },
+
+  {
+    path:'admins',
+    loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+  },
+  {
+    path:'orders',
+    loadChildren:()=>import('./order/order.module').then(m=>m.OrderModule)
+  },
+  {
+    path:'sales',
+    loadChildren:()=>import('./sale/sale.module').then(m=>m.SaleModule)
+  },
   {
     path:'404',
     component:ErrorComponent,

@@ -35,20 +35,20 @@ export class NavbarComponent implements OnInit {
   init(): void {
 
     let menu = $('#sidebar-menu a');
-    $('#sidebar-menu a').on('click', (e: any) => {
-      console.log($(menu).parent().hasClass('submenu'));
-      
-      if ($(menu).parent().hasClass('submenu')) {
+    $('#sidebar-menu a').on('click', (e: Event) => {
+     
+      if ($(e.target).parent().hasClass('submenu')) {
         e.preventDefault();
       }
-      if (!$(menu).hasClass('subdrop')) {
-        $('ul', $(menu).parents('ul:first')).slideUp(250);
-       // $('a', $(menu).parents('ul:first')).removeClass('subdrop');
-        $(menu).next('ul').slideDown(350); $(menu).addClass('subdrop');
+      if (!$(e.target).hasClass('subdrop')) {
+        $('ul', $(e.target).parents('ul:first')).slideUp(250);
+        $('a', $(e.target).parents('ul:first')).removeClass('subdrop');
+        $(e.target).next('ul').slideDown(350); $(e.target).addClass('subdrop');
 
-      } else if ($(menu).hasClass('subdrop')) {
-        $(menu).removeClass('subdrop');
-        $(menu).next('ul').slideUp(350);
+      } else if ($(e.target).hasClass('subdrop')) {
+        $(e.target).removeClass('subdrop');
+        $(e.target).addClass('active');
+        $(e.target).next('ul').slideUp(350);
       }
     });
      $('#sidebar-menu ul li.submenu a.active').parents('li:last').children('a:first').addClass('active').trigger('click');

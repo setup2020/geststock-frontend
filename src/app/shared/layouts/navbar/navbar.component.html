@@ -2,12 +2,12 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li>
+                <li  >
                     <a routerLink="/dashboard"><img src="assets/img/icons/dashboard.svg" alt="img"><span>
                             Dashboard</span> </a>
                 </li>
-                <li class="submenu">
-                    <a href="javascript:void(0);"><img src="assets/img/icons/product.svg" alt="img"><span>
+                <li class="submenu" >
+                    <a  href="javascript:void(0);" ><img src="assets/img/icons/product.svg" alt="img" ><span>
                             Product</span> <span class="menu-arrow"></span></a>
                     <ul>
                         <li><a  routerLink="/products">Liste produits</a></li>
@@ -22,8 +22,8 @@
                     <a href="javascript:void(0);"><img src="assets/img/icons/sales1.svg" alt="img"><span>
                             Ventes</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="javascript:void(0);">Liste des Ventes</a></li>
-                        <li><a  href="javascript:void(0);">Ajouter une vente</a></li>
+                        <li><a routerLink="/sales/list">Liste des Ventes</a></li>
+                        <li><a  routerLink="/sales/add">Ajouter une vente</a></li>
                     </ul>
                 </li>
 
@@ -31,8 +31,8 @@
                     <a href="javascript:void(0);"><img src="assets/img/icons/purchase1.svg" alt="img"><span>
                             Achats</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="javascript:void(0);">Liste des achats</a></li>
-                        <li><a  href="javascript:void(0);">Ajouter un achat</a></li>
+                        <li><a routerLink="/orders/list">Liste des achats</a></li>
+                        <li><a  routerLink="/orders/add">Ajouter un achat</a></li>
                     </ul>
                 </li>
 
@@ -56,8 +56,9 @@
                     <a href="javascript:void(0);"><img src="assets/img/icons/users1.svg" alt="img"><span>
                             Utilisateur</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="javascript:void(0);">Liste utilisateurs</a></li>
-                        <li><a  href="javascript:void(0);">Ajout utilisateurs</a></li>
+                        <li><a routerLink="/admins/users/list">Liste utilisateurs</a></li>
+                        <li><a routerLink="/admins/users/list">Ajout utilisateurs</a></li>
+                        <li><a   routerLink="/admins/roles/list">Liste rôles</a></li>
                     </ul>
                 </li>
              
