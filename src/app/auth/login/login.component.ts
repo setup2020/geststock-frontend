@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/core/auth/account.service';
@@ -11,7 +11,7 @@ import { ToastrService } from 'src/app/shared/services/toastr.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent  implements OnInit{
   submitted = false;
   editForm = this.fb.group({
     password: ['', Validators.required],
@@ -25,6 +25,9 @@ export class LoginComponent {
     private accountService:AccountService,
     private toarst:ToastrService
      ){}
+  ngOnInit(): void {
+     localStorage.clear();
+  }
 
 
      get f(): any {

@@ -3,7 +3,7 @@ import { IRole } from "./role.model";
 
 export interface IUser{
     id?:number | null;
-    lastName:string;
+    lastName?:string;
     firstName?:string;
     photo?:string;
     address?:IAddress;
@@ -12,12 +12,14 @@ export interface IUser{
     phone?:string;
     password?:string;
     roles?:IRole[];
+    username?:string;
 }
 
 export class User implements IUser{
 
     constructor(
         public lastName:string,
+        public username:string,
         public firstName?:string,
         public email?:string,
         public photo?:string,

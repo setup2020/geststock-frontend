@@ -9,6 +9,18 @@
     <div class="card-body">
       <form  [formGroup]="editForm" (ngSubmit)="save()">
         <div class="row">
+
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" formControlName="username"/>
+              <span *ngIf="submitted && f.username.errors">
+                  <span class="text-danger" *ngIf="f.username.errors.required">Champ requis</span>
+              </span>
+              
+            </div>
+          </div>
+
             <div class="col-lg-4 col-sm-6 col-12">
               <div class="form-group">
                 <label>LastName</label>
@@ -46,12 +58,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4 col-sm-6 col-12">
-              <div class="form-group">
-                <label>Mot de passe</label>
-                <input type="password" formControlName="password"/>
-              </div>
-            </div>
+          
         
             <div class="col-lg-4 col-12">
               <div class="form-group">
