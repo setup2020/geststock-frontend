@@ -10,7 +10,7 @@ import { ILineOrderSupplier } from 'src/app/models/lineOrderSupplier.model';
 export class FullNamePipe implements PipeTransform {
   transform(value: any): string {
     if (value && (value.firstName || value.lastName)) {
-      return value?.firstName + ' ' + value?.lastName;
+      return value?.firstName?value?.firstName:'' + ' ' + value?.lastName? value?.lastName:'';
     }
     return '--';
   }

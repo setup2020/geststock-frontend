@@ -5,14 +5,37 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token=localStorage.getItem("token");
+    let isGrantType=false;
+    if(req.body){
+        isGrantType=Object.keys(req.body).includes("grantType");
+    }
+    console.log(isGrantType);
+    
+    if(!isGrantType ){
+     
+      if(token){
+        req=req.clone({
+          setHeaders:{
+            'Authorization':`Bearer ${token}`
+          }
+        });
+    }
+    
+    }
+
+    return next.handle(req).pipe(
+      map((event:HttpEvent<any>)=>{
+        return event;
+      })
+    );
   }
 }
